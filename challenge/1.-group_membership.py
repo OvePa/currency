@@ -4,17 +4,20 @@ from tooz import coordination
 
 members = 1
 
+
 def addMemberCount(group):
     global members
     print("Adding member")
     members += 1
     print("Total members now: ", members)
 
+
 def subMemberCount(group):
     global members
     print("Removing member")
     members -= 1
     print("Total members now: ", members)
+
 
 # Check that a client and group ids are passed as arguments
 if len(sys.argv) != 3:
@@ -25,7 +28,8 @@ if len(sys.argv) != 3:
 c = coordination.get_coordinator(
     # Set a short timeout to see effects faster
     "etcd3://localhost/?timeout=3",
-    sys.argv[1].encode())
+    sys.argv[1].encode(),
+)
 # Start it (initiate connection).
 c.start(start_heart=True)
 
