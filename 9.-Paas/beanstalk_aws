@@ -1,0 +1,28 @@
+Steps to deploy application
+Following are the steps to deploy your application to AWS Elastic Beanstalk:
+
+In the folder containing the application, run the command eb init your_app_name.
+
+Enter eb create. Press enter for using default environment name and DNS CNAME
+prefix or choose a custom one.
+
+Select the load balancer type by entering the relevant option number (1 is the
+default for classic).
+
+Enter your aws-access-id and aws-secret-key.
+
+Type view to view the policy or just press Enter to continue.
+
+Your application will be deployed!
+
+You can enter curl -v http://scapytest-dev.us-west-2.elasticbeanstalk.com/ to
+get the response from your app. Use your own app URL is provided in the form of
+CNAME when the app is deployed.
+
+As shown in the above steps, the command line tool eb provided by awsebcli makes
+it very easy to deploy a Python application in a few commands. And like all cloud
+providers, AWS provides autoscaling features based on several different metrics
+(CPU usage, network bandwidth, etc).
+
+Since Elastic Beanstalk is based on other Amazon services such as EC2, it can be
+handy to use and you can also leverage other services.

@@ -1,0 +1,63 @@
+OpenShift is a platform as a service software edited by Red Hat. It offers
+support for a number of different programming languages, among them Python.
+It goes beyond what Heroku can offer as it has a high level of customization,
+being based on Kubernetes and Docker. That means it is easy to support more
+scenarios than just a Python application, as you can provide your own Docker
+images and Kubernetes templates.
+
+OpenShift is available in three ways: online through OpenShift Online as a
+public cloud that is operated by Red Hat, through OpenShift Dedicated to run
+and manage your own service on other cloud providers (Amazon, Google Compute
+Engine, etc.), and through OpenShift Container Platform to be hosted on your
+own hardware and data center. This allows you to pick the best solution for
+your projects, as you can internalize or externalize what you want, from nothing
+to everything.
+
+The ability to run your own PaaS platform can be pretty important as it prevents
+being in a situation in which you are locked in to a vendor.
+
+-> OpenShift origin
+It is also pretty straightforward to run OpenShift Origin, the free edition of
+OpenShift, on your own hardware. For example, I was able to deploy OpenShift on
+my laptop in a few minutes. Once Docker is installed on your machine and
+OpenShift tools are deployed, creating a new cluster is easy enough.
+
+-> Steps to create new cluster on OpenShift:
+
+1.- Enter the command < oc cluster up >.
+
+Then log into the cluster using the provided command such as
+< oc login -u system:admin> . Then, choose a project.
+
+-> Deploying on OpenShift
+Using OpenShift to deploy a Python application is straightforward.
+The Web dashboard offers access to all the features. It only requires
+providing a git URL to your project repository to run your favorite WSGI application.
+
+-> Steps to deploy an application
+Following are the steps to deploy an application to the OpenShift:
+
+1.- In the folder containing a WSGI application, use command
+< oc new-app python~https://github.com/OpenShiftDemos/os-sample-python --name scaling-python-test >.
+Your application will start building.
+
+2.- Use the command < oc expose svc scaling-python-test >
+to expose the route < scaling-python-test >.
+
+3.- Use the command < oc status > to see if the app is deployed. When the app is
+deployed, its URL will be provided and you can use curl
+(such as < curl -v http://scaling-python-test-myproject.192.168.64.3.xip.io/ >)
+to get the response.
+
+As you can see, it is quite comfortable to deploy a Python application to an
+OpenShift instance. OpenShift takes care of cloning the git repository and
+deploying it in a Python container.
+
+There are numerous other features provided by OpenShift that allow for completing
+your application. It can also help deploying and managing network services
+(RDBMS, REST API, key/value stores, etc.).
+
+On the scaling side, OpenShift makes it very easy to scale your application to
+several pods automatically based on CPU consumption. It monitors the application
+health for you, and the API or dashboard allows you to define your scaling rules
+with a few clicks or commands.

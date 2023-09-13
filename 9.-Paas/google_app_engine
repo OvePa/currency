@@ -1,0 +1,20 @@
+Deploying WSGI Python app
+There are only two files needed to deploy a WSGI Python application in the Google App Engine:
+
+* app.yaml which contains the application metadata and the address of the main module to run.
+* At least one Python file that contains the code to run. Obviously, it can be an entire
+Python module with subdirectories.
+
+Steps to deploy an application
+Following are the steps needed to deploy a WSGI app to Google App Engine:
+
+1.- In the folder containing the app, enter command gcloud app deploy. If you see
+an error that you are not logged in, then use the command gcloud auth login to
+login into a Google account.
+
+2.- Enter y to continue deploying.
+
+Your application will be deployed!
+
+You can access the application using command curl https://scapytest.appspot.com/.
+Use your own app URL provided when the application is deployed.

@@ -1,0 +1,19 @@
+Steps to deploy an app on Heroku:
+Once you are in the folder containing the app (you will be in the heroku-app
+folder when you launch the terminal below), enter command heroku login --interactive,
+and log in with your Heroku account.
+Once you are logged in, enter the command heroku create.
+Once the app is created, commit the changes to GitHub using commands:
+git init
+git add .
+git config --global user.email "your_email@email.com"
+git commit -m 'Initial import'
+Then, push the app using these commands:
+git remote add heroku https://git.heroku.com/murmuring-fortress-09478.git -
+use your app GitHub link displayed when you created heroku app in step 2.
+git push heroku master
+Your app is now deployed!
+
+You can use the command curl https://murmuring-fortress-09478.herokuapp.com/
+to get a response from the app. Use your own URL that is provided when the app
+is successfully deployed.
